@@ -1,0 +1,56 @@
+--- config.def.h	2018-06-02 22:07:27.517726715 -0500
++++ config.h	2018-06-03 00:41:03.741471893 -0500
+@@ -120,7 +120,7 @@
+  * 6: Bar ("|")
+  * 7: Snowman ("☃")
+  */
+-static unsigned int cursorshape = 2;
++static unsigned int cursorshape = 6;
+ 
+ /*
+  * Default columns and rows numbers
+@@ -160,7 +160,7 @@
+ 
+ /* Internal keyboard shortcuts. */
+ #define MODKEY Mod1Mask
+-#define TERMMOD (ControlMask|ShiftMask)
++#define TERMMOD (MODKEY|ShiftMask)
+ 
+ static Shortcut shortcuts[] = {
+ 	/* mask                 keysym          function        argument */
+@@ -168,16 +168,35 @@
+ 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
+ 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
+ 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
++	
++	/* Zooming / changing font-size defaults retained at new settings */
+ 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
+ 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
++	{ TERMMOD,              XK_K,           zoom,           {.f = +1} },
++	{ TERMMOD,              XK_J,           zoom,           {.f = -1} },
++	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
++	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
+ 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
++
++	/* Adding Shift+Insert for confort / similarity with other terms  */
+ 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
+ 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
+ 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
++	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+ 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+ 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
++
++	/* Scroll up/down by whole pages at a time                        */
+ 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+ 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
++	{ ShiftMask,            XK_u,           kscrollup,      {.i = -1} },
++	{ ShiftMask,            XK_d,           kscrolldown,    {.i = -1} },
++
++	/* Scroll up/down lines at a time                                 */
++	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
++	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
++	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
++	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
+ };
+ 
+ /*
