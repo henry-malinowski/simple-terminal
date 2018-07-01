@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Simple Terminal
 GenericName=Suckless Terminal
-Comment=standard terminal emulator for the X window system
-Exec=st
+Comment=st - the simple terminal by suckless.org
+Exec=/usr/local/bin/st
 Terminal=false
 Type=Application
 Icon=terminal
