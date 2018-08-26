@@ -20,7 +20,7 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
 
 # flags
 CPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
-STCFLAGS = $(INCS) $(CPPFLAGS) $(CFLAGS) -march=native -O3
+STCFLAGS = $(INCS) $(CPPFLAGS) $(CFLAGS) -march=native -Ofast
 STLDFLAGS = $(LIBS) $(LDFLAGS)
 
 # compiler and linker
